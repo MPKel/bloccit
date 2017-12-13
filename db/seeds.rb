@@ -1,6 +1,9 @@
 require 'random_data'
 
 #create posts
+uniqPost = Post.find_or_create_by!(title: 'McSweeny', body: "Hi I'm McSweeny and this is my first post!")
+uniqComment = Comment.find_or_create_by!(body: "go away McSweeny!", post: uniqPost)
+
 50.times do
   Post.create!(
     title: RandomData.random_sentence,
