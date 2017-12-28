@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   #
   # get 'questions/edit'
 
-  resources :posts, :questions
+  resources :questions
+  resources :topics do
+    resources :posts, except: [:index]
+  end
 
 
 
