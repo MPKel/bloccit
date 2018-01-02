@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+  let(:user) { User.create!(name: "bloccit user", email: "user@bloccit.com", password: "password") }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_length_of(:name).is_at_least(1) }
@@ -21,6 +21,14 @@ RSpec.describe User, type: :model do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
     end
   end
+
+  # describe "capitalizing the name" do
+  #
+  #   it "should capitalize the first letter of each word in a user name" do
+  #     post :create, params: { user: { name: "johnny Smith", email: "fdggd@dfg.com", password: "password1234" } }
+  #     expect(:user.name).to eq("Johnny Smith")
+  #   end
+  # end
 
   describe "invalid user" do
    let(:user_with_invalid_name) { User.new(name: "", email: "user@bloccit.com") }
