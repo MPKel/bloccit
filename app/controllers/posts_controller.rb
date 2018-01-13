@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
   before_action :require_sign_in, except: :show
-  before_action :authorize_user, except: [:show, :new, :create]
+  before_action :authorize_mod_post, except: [:index, :show, :new, :create]
+  before_action :authorize_user, except: [:show, :new, :create, :edit, :update]
+
+  # before_action :authorize_mod_post, except: [:index, :show]
+  # before_action :authorize_admin, except: [:index, :show, :edit, :update]
 
   def show
     @post = Post.find(params[:id])
@@ -62,6 +66,12 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def authorize_mod_post
+    unless current_user.moderator?
+      authorize_user
+    end
   end
 
   def authorize_user
