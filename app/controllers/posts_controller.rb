@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_mod_post, except: [:index, :show, :new, :create]
   before_action :authorize_user, except: [:show, :new, :create, :edit, :update]
 
+  #use only instead of except
   # before_action :authorize_mod_post, except: [:index, :show]
   # before_action :authorize_admin, except: [:index, :show, :edit, :update]
 
@@ -69,7 +70,7 @@ class PostsController < ApplicationController
   end
 
   def authorize_mod_post
-    unless current_user.moderator?
+    unless current_user.moderator? #current_user.moderator
       authorize_user
     end
   end
