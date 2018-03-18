@@ -16,9 +16,11 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-
+ body {
+   background-color: lightblue;
+ }
  .avimage {
-   
+
    border: 4px solid white;
    border-radius: 5px;
    box-shadow: 2px 2px 2px grey;
@@ -29,8 +31,8 @@
  // }
 
  .nav {
-   padding-top: 5px;
-   background-color: lightblue;
+   padding: 5px 5px 0 0;
+   background-color: lightgray;
    height: 70px;
    border: 2px solid black;
  }
